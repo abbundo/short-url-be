@@ -1,0 +1,56 @@
+plugins {
+  id 'org.springframework.boot' version '2.5.7'
+  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'java'
+}
+
+group = 'com.daimlertss.challenge'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+ext['log4j2.version'] = '2.17.0'
+ext {
+  lombokVersion = '1.18.22'
+  slf4jWithExtVersion = '1.7.36'
+  swagger2Version = '3.0.0'
+  jaxbApiVersion = '3.0.1'
+  activationVersion = '2.0.1'
+  jaxbRuntimeVersion = '3.0.2'
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation "org.slf4j:slf4j-ext:$slf4jWithExtVersion"
+  implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jaxbApiVersion"
+  implementation "io.springfox:springfox-swagger-ui:$swagger2Version"
+  implementation "io.springfox:springfox-boot-starter:$swagger2Version"
+  implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+  implementation "jakarta.xml.bind:jakarta.xml.bind-api:$jaxbApiVersion"
+  implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2'
+  implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+  runtimeOnly "org.glassfish.jaxb:jaxb-runtime:$jaxbRuntimeVersion"
+  runtimeOnly 'com.h2database:h2:2.1.210'
+  runtimeOnly "com.sun.activation:jakarta.activation:$activationVersion"
+  compileOnly "org.projectlombok:lombok:$lombokVersion"
+  developmentOnly "org.springframework.boot:spring-boot-devtools"
+  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+  testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+test {
+  useJUnitPlatform()
+}

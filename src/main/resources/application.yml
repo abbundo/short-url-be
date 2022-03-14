@@ -1,0 +1,12 @@
+server:
+  port: 8086
+  error:
+    include-stacktrace: never
+
+#In Prod kein Swagger
+swagger:
+  api:
+    enabled: false
+
+
+
